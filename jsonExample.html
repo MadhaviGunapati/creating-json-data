@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul id="people">
+
+        </ul>
+    </div>
+    <script>
+        var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var responce = JSON.parse(xhttp.responseText);
+      var res = responce.people;
+      var output = '';
+        for( var i = 0; i<res.length; i++){
+           output +='<li>' + res[i].name + '</li>';
+            
+        }
+        document.getElementById('people').innerHTML=output;
+    }
+  };
+  xhttp.open("GET", "people.json", true);
+  xhttp.send();
+      /*  var person = {
+            name : "Madhavi",
+            age : 27,
+            address : {
+                street:"5 main st",
+                city: "Boston"
+            },
+            children : ['Akshara', 'Jahnavi']          
+        }
+        //person = JSON.stringify(person);
+        //person = JSON.parse(person);
+        var people = [
+            {
+                name: "Krishna",
+                age: 37
+            },
+            {
+                name: "Madhavi",
+                age: 27
+            },
+            {
+                name: "Akshara",
+                age: 5
+            },
+            {
+                name: "Jahnavi",
+                age: 2
+            }
+
+        ];
+       // console.log(person.children[0]);
+       // console.log(people[0].name);
+        var output = '';
+        for( var i = 0; i<people.length; i++){
+            output +='<li>' + people[i] + '</li>';
+            console.log(people[i]);
+            console.log(output);
+        }
+        document.getElementById('people').innerHTML=output;
+*/
+    </script>
+</body>
+</html>
